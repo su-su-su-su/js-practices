@@ -10,7 +10,7 @@ const promise = new Promise((resolve, reject) => {
   });
 });
 
-function run(db, sql) {
+export function run(db, sql) {
   return new Promise((resolve, reject) => {
     db.run(sql, function (err) {
       if (err) {
@@ -22,7 +22,7 @@ function run(db, sql) {
   });
 }
 
-function get(db, sql) {
+export function get(db, sql) {
   return new Promise((resolve, reject) => {
     db.get(sql, (err, row) => {
       if (err) {
@@ -52,9 +52,6 @@ promise
   })
   .then(({ db, row }) => {
     console.log(`idは${row.id}です`);
-    return db;
-  })
-  .then((db) => {
     return run(db, "drop table books");
   })
   .then(({ db }) => {
