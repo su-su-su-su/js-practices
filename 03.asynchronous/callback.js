@@ -15,7 +15,7 @@ db.run(
     }
     console.log("booksテーブルを作成");
 
-    db.run("insert into books(title) values('Javascriptの本')", function (err) {
+    db.run("insert into books(title) values('Javascriptの本')", (err) => {
       if (err) {
         console.log(err.message);
       }
@@ -32,8 +32,8 @@ db.run(
             console.log(err.message);
           }
           console.log("booksテーブルを削除しました");
-          db.close();
         });
+        db.close();
       });
     });
   }
