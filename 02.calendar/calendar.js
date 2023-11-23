@@ -14,7 +14,11 @@ console.log(`${month.toString().padStart(8, " ")}月 ${year}`);
 console.log("日 月 火 水 木 金 土");
 process.stdout.write(" ".repeat(3 * currentDate.getDay()));
 while (currentDate <= dayEnd) {
-  process.stdout.write(currentDate.getDate().toString().padStart(3, " "));
+  let dateString = currentDate.getDate().toString();
+  if (dateString.length === 1) {
+    dateString = " " + dateString;
+  }
+  process.stdout.write(dateString.padEnd(3, " "));
   if (currentDate.getDay() === 6) {
     process.stdout.write("\n");
   }
