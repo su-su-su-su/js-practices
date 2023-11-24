@@ -13,15 +13,14 @@ const dayEnd = new Date(year, month + 1, 0);
 console.log(`${(month + 1).toString().padStart(8, " ")}月 ${year}`);
 console.log("日 月 火 水 木 金 土");
 process.stdout.write(" ".repeat(3 * currentDate.getDay()));
-while (currentDate <= dayEnd) {
-  let dateString = currentDate.getDate().toString();
+for (let date = currentDate; date <= dayEnd; date.setDate(date.getDate() + 1)) {
+  let dateString = date.getDate().toString();
   if (dateString.length === 1) {
     dateString = dateString.padStart(2, " ");
   }
   process.stdout.write(dateString + " ");
-  if (currentDate.getDay() === 6) {
+  if (date.getDay() === 6) {
     process.stdout.write("\n");
   }
-  currentDate.setDate(currentDate.getDate() + 1);
 }
 process.stdout.write("\n");
