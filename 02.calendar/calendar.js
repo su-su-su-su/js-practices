@@ -16,9 +16,9 @@ process.stdout.write(" ".repeat(3 * currentDate.getDay()));
 while (currentDate <= dayEnd) {
   let dateString = currentDate.getDate().toString();
   if (dateString.length === 1) {
-    dateString = " " + dateString;
+    dateString = dateString.padStart(2, " ");
   }
-  process.stdout.write(dateString.padEnd(3, " "));
+  process.stdout.write(dateString + " ");
   if (currentDate.getDay() === 6) {
     process.stdout.write("\n");
   }
