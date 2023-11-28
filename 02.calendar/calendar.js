@@ -14,11 +14,12 @@ console.log(`${(month + 1).toString().padStart(8, " ")}月 ${year}`);
 console.log("日 月 火 水 木 金 土");
 process.stdout.write(" ".repeat(3 * firstDate.getDay()));
 for (let day = 1; day <= dayEnd.getDate(); day++) {
-  let date = new Date(year, month, day);
-  let dateString = date.getDate().toString().padStart(2, " ");
-  process.stdout.write(dateString + " ");
+  const date = new Date(year, month, day);
+  const dateString = date.getDate().toString().padStart(2, " ");
   if (date.getDay() === 6) {
-    process.stdout.write("\n");
+    process.stdout.write(dateString + "\n");
+  } else {
+    process.stdout.write(dateString + " ");
   }
 }
 process.stdout.write("\n");
