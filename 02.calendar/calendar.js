@@ -15,11 +15,12 @@ console.log("日 月 火 水 木 金 土");
 process.stdout.write(" ".repeat(3 * firstDate.getDay()));
 for (let day = 1; day <= dayEnd.getDate(); day++) {
   const date = new Date(year, month, day);
-  const dateString = date.getDate().toString().padStart(2, " ");
+  const dateString = day.toString().padStart(2, " ");
+  process.stdout.write(dateString);
   if (date.getDay() === 6) {
-    process.stdout.write(dateString + "\n");
+    process.stdout.write("\n");
   } else {
-    process.stdout.write(dateString + " ");
+    process.stdout.write(" ");
   }
 }
 process.stdout.write("\n");
