@@ -1,5 +1,5 @@
 import sqlite3 from "sqlite3";
-import { run, get } from "./promise-error.js";
+import { run, get } from "./databaseFunctions.js";
 
 async function main() {
   try {

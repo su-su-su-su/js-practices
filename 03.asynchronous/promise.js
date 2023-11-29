@@ -1,4 +1,5 @@
 import sqlite3 from "sqlite3";
+import { run, get } from "./databaseFunctions.js";
 
 const promise = new Promise((resolve, reject) => {
   const db = new sqlite3.Database(":memory:", (err) => {
@@ -9,30 +10,6 @@ const promise = new Promise((resolve, reject) => {
     }
   });
 });
-
-export function run(db, sql) {
-  return new Promise((resolve, reject) => {
-    db.run(sql, function (err) {
-      if (err) {
-        reject(err);
-      } else {
-        resolve({ db, lastID: this.lastID });
-      }
-    });
-  });
-}
-
-export function get(db, sql) {
-  return new Promise((resolve, reject) => {
-    db.get(sql, (err, row) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve({ db, row });
-      }
-    });
-  });
-}
 
 promise
   .then((db) => {
