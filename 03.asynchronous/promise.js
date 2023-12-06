@@ -21,10 +21,10 @@ promise
   })
   .then(({ db }) => {
     console.log("booksテーブルを作成");
-    return run(db, "INSERT INTO books(title) VALUES('Javascriptの本')");
+    return run(db, "INSERT INTO books(title) VALUES('JavaScriptの本')");
   })
   .then(({ db, lastID }) => {
-    console.log(`作成したidは${lastID}です`);
+    console.log(`作成したレコードは${lastID}です`);
     return get(db, "SELECT * FROM books WHERE rowid");
   })
   .then(({ db, row }) => {

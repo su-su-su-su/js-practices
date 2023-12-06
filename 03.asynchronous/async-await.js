@@ -14,9 +14,9 @@ async function main() {
 
     const { lastID } = await run(
       db,
-      "INSERT INTO books(title) VALUES('Javascriptの本')"
+      "INSERT INTO books(title) VALUES('JavaScriptの本')"
     );
-    console.log(`作成したidは${lastID}です`);
+    console.log(`作成したレコードは${lastID}です`);
 
     const { row } = await get(db, `SELECT * FROM books WHERE id = ${lastID}`);
     console.log(`idは${row.id}です`);

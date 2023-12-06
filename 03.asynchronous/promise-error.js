@@ -21,7 +21,7 @@ promise
   })
   .then(({ db }) => {
     console.log("booksテーブルを作成");
-    return run(db, "INSERT INTO book(title) VALUES('Javascriptの本')");
+    return run(db, "INSERT INTO book(title) VALUES('JavaScriptの本')");
   })
   .then(({ db, err }) => {
     if (err) {

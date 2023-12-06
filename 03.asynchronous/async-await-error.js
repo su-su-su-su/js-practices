@@ -14,7 +14,7 @@ async function main() {
 
     const { err: runErr } = await run(
       db,
-      "INSERT INTO book(title) VALUES('Javascriptの本')"
+      "INSERT INTO book(title) VALUES('JavaScriptの本')"
     );
     if (runErr) console.error("エラー発生:", runErr.message);
 

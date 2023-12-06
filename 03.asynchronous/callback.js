@@ -15,11 +15,11 @@ db.run(
     }
     console.log("booksテーブルを作成");
 
-    db.run("INSERT INTO books(title) VALUES('Javascriptの本')", (err) => {
+    db.run("INSERT INTO books(title) VALUES('JavaScriptの本')", (err) => {
       if (err) {
         console.log(err.message);
       }
-      console.log(`作成したidは${this.lastID}です`);
+      console.log(`作成したレコードは${this.lastID}です`);
 
       db.get("SELECT * FROM books WHERE rowid", (err, row) => {
         if (err) {
