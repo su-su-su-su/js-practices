@@ -8,20 +8,20 @@ async function main() {
 
     await run(
       db,
-      "create table books(id integer primary key autoincrement, title text not null unique)"
+      "CREATE TABLE books(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL UNIQUE)"
     );
     console.log("booksテーブルを作成");
 
     const { err: runErr } = await run(
       db,
-      "insert into book(title) values('Javascriptの本')"
+      "INSERT INTO book(title) VALUES('Javascriptの本')"
     );
     if (runErr) console.error("エラー発生:", runErr.message);
 
-    const { err: getErr } = await get(db, "select * from books where notitle");
+    const { err: getErr } = await get(db, "SELECT * FROM books WHERE notitle");
     if (getErr) console.error("エラー発生:", getErr.message);
 
-    await run(db, "drop table books");
+    await run(db, "DROP TABLE books");
     console.log("booksテーブルを削除しました");
 
     db.close();

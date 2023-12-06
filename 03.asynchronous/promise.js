@@ -16,20 +16,20 @@ promise
     console.log("データベースを作成");
     return run(
       db,
-      "create table books(id integer primary key autoincrement, title text not null unique)"
+      "CREATE TABLE books(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL UNIQUE)"
     );
   })
   .then(({ db }) => {
     console.log("booksテーブルを作成");
-    return run(db, "insert into books(title) values('Javascriptの本')");
+    return run(db, "INSERT INTO books(title) VALUES('Javascriptの本')");
   })
   .then(({ db, lastID }) => {
     console.log(`作成したidは${lastID}です`);
-    return get(db, "select * from books where rowid");
+    return get(db, "SELECT * FROM books WHERE rowid");
   })
   .then(({ db, row }) => {
     console.log(`idは${row.id}です`);
-    return run(db, "drop table books");
+    return run(db, "DROP TABLE books");
   })
   .then(({ db }) => {
     console.log("booksテーブルを削除しました");

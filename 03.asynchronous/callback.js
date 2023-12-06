@@ -8,26 +8,26 @@ const db = new sqlite3.Database(":memory:", (err) => {
 });
 
 db.run(
-  "create table books(id integer primary key autoincrement, title text not null unique)",
+  "CREATE TABLE books(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL UNIQUE)",
   (err) => {
     if (err) {
       console.log(err.message);
     }
     console.log("booksテーブルを作成");
 
-    db.run("insert into books(title) values('Javascriptの本')", (err) => {
+    db.run("INSERT INTO books(title) VALUES('Javascriptの本')", (err) => {
       if (err) {
         console.log(err.message);
       }
       console.log(`作成したidは${this.lastID}です`);
 
-      db.get("select * from books where rowid", (err, row) => {
+      db.get("SELECT * FROM books WHERE rowid", (err, row) => {
         if (err) {
           console.log(err.message);
         }
         console.log(`idは${row.id}です`);
 
-        db.run("drop table books", (err) => {
+        db.run("DROP TABLE books", (err) => {
           if (err) {
             console.log(err.message);
           }

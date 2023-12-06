@@ -16,24 +16,24 @@ promise
     console.log("データベースを作成");
     return run(
       db,
-      "create table books(id integer primary key autoincrement, title text not null unique)"
+      "CREATE TABLE books(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL UNIQUE)"
     );
   })
   .then(({ db }) => {
     console.log("booksテーブルを作成");
-    return run(db, "insert into book(title) values('Javascriptの本')");
+    return run(db, "INSERT INTO book(title) VALUES('Javascriptの本')");
   })
   .then(({ db, err }) => {
     if (err) {
       console.error("エラー発生:", err.message);
     }
-    return get(db, "select * from books where notitle");
+    return get(db, "SELECT * FROM books WHERE notitle");
   })
   .then(({ db, err }) => {
     if (err) {
       console.error("エラー発生:", err.message);
     }
-    return run(db, "drop table books");
+    return run(db, "DROP TABLE books");
   })
   .then(({ db }) => {
     console.log("booksテーブルを削除しました");

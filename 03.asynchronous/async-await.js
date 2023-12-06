@@ -8,20 +8,20 @@ async function main() {
 
     await run(
       db,
-      "create table books(id integer primary key autoincrement, title text not null unique)"
+      "CREATE TABLE books(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL UNIQUE)"
     );
     console.log("booksテーブルを作成");
 
     const { lastID } = await run(
       db,
-      "insert into books(title) values('Javascriptの本')"
+      "INSERT INTO books(title) VALUES('Javascriptの本')"
     );
     console.log(`作成したidは${lastID}です`);
 
-    const { row } = await get(db, `select * from books where id = ${lastID}`);
+    const { row } = await get(db, `SELECT * FROM books WHERE id = ${lastID}`);
     console.log(`idは${row.id}です`);
 
-    await run(db, "drop table books");
+    await run(db, "DROP TABLE books");
     console.log("booksテーブルを削除しました");
 
     db.close();
