@@ -32,8 +32,8 @@ db.run(
             console.log(err.message);
           }
           console.log("booksテーブルを削除しました");
+          db.close();
         });
-        db.close();
       });
     });
   }
