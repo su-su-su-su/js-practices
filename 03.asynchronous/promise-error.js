@@ -1,24 +1,17 @@
 import sqlite3 from "sqlite3";
 import { run, get } from "./database-functions.js";
 
-const promise = new Promise((resolve, reject) => {
-  const db = new sqlite3.Database(":memory:", (err) => {
-    if (err) {
-      reject(err);
-    } else {
-      resolve(db);
-    }
-  });
+const db = new sqlite3.Database(":memory:", (err) => {
+  if (err) {
+    console.log(err.message);
+  }
+  console.log("データベースを作成");
 });
 
-promise
-  .then((db) => {
-    console.log("データベースを作成");
-    return run(
-      db,
-      "CREATE TABLE books(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL UNIQUE)"
-    );
-  })
+run(
+  db,
+  "CREATE TABLE books(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL UNIQUE)"
+)
   .then(({ db }) => {
     console.log("booksテーブルを作成");
     return run(db, "INSERT INTO book(title) VALUES('JavaScriptの本')");
