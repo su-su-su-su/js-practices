@@ -12,23 +12,23 @@ run(
   db,
   "CREATE TABLE books(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL UNIQUE)"
 )
-  .then(({ db }) => {
+  .then(() => {
     console.log("booksテーブルを作成");
     return run(db, "INSERT INTO book(title) VALUES('JavaScriptの本')");
   })
-  .then(({ db, err }) => {
+  .catch((err) => {
     if (err) {
       console.error("エラー発生:", err.message);
     }
     return get(db, "SELECT * FROM books WHERE notitle");
   })
-  .then(({ db, err }) => {
+  .catch((err) => {
     if (err) {
       console.error("エラー発生:", err.message);
     }
     return run(db, "DROP TABLE books");
   })
-  .then(({ db }) => {
+  .then(() => {
     console.log("booksテーブルを削除しました");
     db.close();
   })

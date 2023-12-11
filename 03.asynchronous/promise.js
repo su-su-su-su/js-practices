@@ -12,19 +12,19 @@ run(
   db,
   "CREATE TABLE books(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL UNIQUE)"
 )
-  .then(({ db }) => {
+  .then(() => {
     console.log("booksテーブルを作成");
     return run(db, "INSERT INTO books(title) VALUES('JavaScriptの本')");
   })
-  .then(({ db, lastID }) => {
-    console.log(`作成したレコードは${lastID}です`);
-    return get(db, "SELECT * FROM books WHERE rowid");
+  .then((result) => {
+    console.log(`作成したレコード${result.lastID}はです`);
+    return get(db, "SELECT * FROM books");
   })
-  .then(({ db, row }) => {
+  .then((row) => {
     console.log(`idは${row.id}です`);
     return run(db, "DROP TABLE books");
   })
-  .then(({ db }) => {
+  .then(() => {
     console.log("booksテーブルを削除しました");
     db.close();
   })
