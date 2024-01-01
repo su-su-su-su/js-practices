@@ -12,7 +12,7 @@ db.run(
     db.run("INSERT INTO books(title) VALUES('JavaScriptの本')", function () {
       console.log(`作成したレコードのidは${this.lastID}です`);
 
-      db.get("SELECT * FROM books", (err, row) => {
+      db.get("SELECT * FROM books", (_, row) => {
         console.log(`titleは${row.title}です`);
 
         db.run("DROP TABLE books", () => {
