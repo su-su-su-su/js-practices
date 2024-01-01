@@ -2,8 +2,9 @@ import sqlite3 from "sqlite3";
 import { run, get, close } from "./database-functions.js";
 
 async function main() {
-  const db = new sqlite3.Database(":memory:");
-  console.log("データベースを作成");
+  const db = new sqlite3.Database(":memory:", () => {
+    console.log("データベースを作成");
+  });
 
   await run(
     db,
