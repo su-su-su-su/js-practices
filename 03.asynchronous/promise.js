@@ -17,11 +17,11 @@ run(
     return run(db, "INSERT INTO books(title) VALUES('JavaScriptの本')");
   })
   .then((result) => {
-    console.log(`作成したレコード${result.lastID}はです`);
+    console.log(`作成したレコードのidは${result.lastID}です`);
     return get(db, "SELECT * FROM books");
   })
   .then((row) => {
-    console.log(`idは${row.id}です`);
+    console.log(`titleは${row.title}です`);
     return run(db, "DROP TABLE books");
   })
   .then(() => {

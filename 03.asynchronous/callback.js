@@ -10,10 +10,10 @@ db.run(
     console.log("booksテーブルを作成");
 
     db.run("INSERT INTO books(title) VALUES('JavaScriptの本')", function () {
-      console.log(`作成したレコードは${this.lastID}です`);
+      console.log(`作成したレコードのidは${this.lastID}です`);
 
       db.get("SELECT * FROM books", (err, row) => {
-        console.log(`idは${row.id}です`);
+        console.log(`titleは${row.title}です`);
 
         db.run("DROP TABLE books", () => {
           console.log("booksテーブルを削除しました");

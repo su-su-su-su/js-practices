@@ -16,10 +16,10 @@ async function main() {
       db,
       "INSERT INTO books(title) VALUES('JavaScriptの本')"
     );
-    console.log(`作成したレコードは${lastID}です`);
+    console.log(`作成したレコードのidは${lastID}です`);
 
     const { row } = await get(db, `SELECT * FROM books WHERE id = ${lastID}`);
-    console.log(`idは${row.id}です`);
+    console.log(`titleは${row.title}です`);
 
     await run(db, "DROP TABLE books");
     console.log("booksテーブルを削除しました");
