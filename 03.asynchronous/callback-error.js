@@ -5,21 +5,21 @@ const db = new sqlite3.Database(":memory:", () => {
 });
 
 db.run(
-  "create table books(id integer primary key autoincrement, title text not null unique)",
+  "CREATE TABLE books(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL UNIQUE)",
   () => {
     console.log("booksテーブルを作成");
 
-    db.run("insert into book(title) values('Javascriptの本')", (err) => {
+    db.run("INSERT INTO books(title) VALUES('JavaScriptの本')", (err) => {
       if (err) {
         console.error(err.message);
       }
 
-      db.get("select * from books where notitle", (err) => {
+      db.get("SELECT * FROM books WHERE notitle", (err) => {
         if (err) {
           console.error(err.message);
         }
 
-        db.run("drop table books", () => {
+        db.run("DROP TABLE books", () => {
           console.log("booksテーブルを削除しました");
         });
         db.close();
