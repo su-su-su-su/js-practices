@@ -1,5 +1,5 @@
 import sqlite3 from "sqlite3";
-import { run, get } from "./database-functions.js";
+import { run, get, close } from "./database-functions.js";
 
 const db = new sqlite3.Database(":memory:", (err) => {
   if (err) {
@@ -30,7 +30,7 @@ run(
   })
   .then(() => {
     console.log("booksテーブルを削除しました");
-    db.close();
+    return close(db);
   })
   .catch((err) => {
     console.error("データベース操作中にエラーが発生しました:", err.message);

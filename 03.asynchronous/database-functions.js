@@ -22,3 +22,15 @@ export function get(db, sql) {
     });
   });
 }
+
+export function close(db) {
+  return new Promise((resolve, reject) => {
+    db.close((err) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve();
+      }
+    });
+  });
+}

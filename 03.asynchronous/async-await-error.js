@@ -1,5 +1,5 @@
 import sqlite3 from "sqlite3";
-import { run, get } from "./database-functions.js";
+import { run, get, close } from "./database-functions.js";
 
 async function main() {
   const db = new sqlite3.Database(":memory:");
@@ -31,7 +31,7 @@ async function main() {
   await run(db, "DROP TABLE books");
   console.log("booksテーブルを削除しました");
 
-  db.close();
+  await close(db);
 }
 
 main();
