@@ -11,12 +11,12 @@ db.run(
 
     db.run("INSERT INTO books(title) VALUES('JavaScriptの本')", (err) => {
       if (err) {
-        console.error(err.message);
+        console.error("エラー発生:", err.message);
       }
 
       db.get("SELECT * FROM books WHERE notitle", (err) => {
         if (err) {
-          console.error(err.message);
+          console.error("エラー発生:", err.message);
         }
 
         db.run("DROP TABLE books", () => {

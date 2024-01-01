@@ -26,7 +26,4 @@ run(
   .then(() => {
     console.log("booksテーブルを削除しました");
     return close(db);
-  })
-  .catch((err) => {
-    console.error("データベース操作中にエラーが発生しました:", err.message);
   });
