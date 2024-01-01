@@ -17,15 +17,13 @@ run(
     return run(db, "INSERT INTO book(title) VALUES('JavaScriptの本')");
   })
   .catch((err) => {
-    if (err) {
-      console.error("エラー発生:", err.message);
-    }
+    console.error("エラー発生:", err.message);
+
     return get(db, "SELECT * FROM books WHERE notitle");
   })
   .catch((err) => {
-    if (err) {
-      console.error("エラー発生:", err.message);
-    }
+    console.error("エラー発生:", err.message);
+
     return run(db, "DROP TABLE books");
   })
   .then(() => {
