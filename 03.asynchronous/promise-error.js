@@ -1,10 +1,7 @@
 import sqlite3 from "sqlite3";
 import { run, get, close } from "./database-functions.js";
 
-const db = new sqlite3.Database(":memory:", (err) => {
-  if (err) {
-    console.log(err.message);
-  }
+const db = new sqlite3.Database(":memory:", () => {
   console.log("データベースを作成");
 });
 
