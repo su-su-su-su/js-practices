@@ -18,7 +18,7 @@ async function main() {
     );
     console.log(`作成したレコードのidは${lastID}です`);
 
-    const { row } = await get(db, `SELECT * FROM books WHERE id = ${lastID}`);
+    const row = await get(db, `SELECT * FROM books WHERE id = ${lastID}`);
     console.log(`titleは${row.title}です`);
 
     await run(db, "DROP TABLE books");
