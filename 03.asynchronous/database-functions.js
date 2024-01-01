@@ -14,9 +14,7 @@ export function get(db, sql) {
   return new Promise((resolve, reject) => {
     db.get(sql, (err, row) => {
       if (err) {
-        if (err) {
-          reject(err);
-        }
+        reject(err);
       }
       resolve(row);
     });
