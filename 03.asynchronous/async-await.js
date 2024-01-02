@@ -12,13 +12,13 @@ async function main() {
   );
   console.log("booksテーブルを作成");
 
-  const { lastID } = await run(
+  const result = await run(
     db,
     "INSERT INTO books(title) VALUES('JavaScriptの本')"
   );
-  console.log(`作成したレコードのidは${lastID}です`);
+  console.log(`作成したレコードのidは${result.lastID}です`);
 
-  const row = await get(db, `SELECT * FROM books WHERE id = ${lastID}`);
+  const row = await get(db, `SELECT * FROM books WHERE id = ${result.lastID}`);
   console.log(`titleは${row.title}です`);
 
   await run(db, "DROP TABLE books");
