@@ -9,7 +9,7 @@ db.run(
   () => {
     console.log("booksテーブルを作成");
 
-    db.run("INSERT INTO books(title) VALUES('JavaScriptの本')", (err) => {
+    db.run("INSERT INTO book(title) VALUES('JavaScriptの本')", (err) => {
       if (err) {
         console.error("エラー発生:", err.message);
       }
