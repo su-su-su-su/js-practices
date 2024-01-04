@@ -15,8 +15,9 @@ export function get(db, sql) {
     db.get(sql, (err, row) => {
       if (err) {
         reject(err);
+      } else {
+        resolve(row);
       }
-      resolve(row);
     });
   });
 }
