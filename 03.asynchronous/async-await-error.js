@@ -16,7 +16,7 @@ async function main() {
     await run(db, "INSERT INTO book(title) VALUES('JavaScriptの本')");
   } catch (err) {
     if (err instanceof Error) {
-      console.error("エラー発生:", err.message);
+      console.error(`エラー発生: ${err.message}`);
     } else {
       throw err;
     }
@@ -25,7 +25,7 @@ async function main() {
     await get(db, "SELECT * FROM books WHERE notitle");
   } catch (err) {
     if (err instanceof Error) {
-      console.error("エラー発生:", err.message);
+      console.error(`エラー発生: ${err.message}`);
     } else {
       throw err;
     }
