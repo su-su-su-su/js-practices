@@ -11,6 +11,7 @@ run(
 )
   .then(() => {
     console.log("booksテーブルを作成");
+
     return run(db, "INSERT INTO book(title) VALUES('JavaScriptの本')");
   })
   .catch((err) => {
@@ -25,5 +26,6 @@ run(
   })
   .then(() => {
     console.log("booksテーブルを削除しました");
+
     return close(db);
   });

@@ -11,6 +11,7 @@ async function main() {
     "CREATE TABLE books(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL UNIQUE)"
   );
   console.log("booksテーブルを作成");
+
   try {
     await run(db, "INSERT INTO book(title) VALUES('JavaScriptの本')");
   } catch (err) {

@@ -11,17 +11,21 @@ run(
 )
   .then(() => {
     console.log("booksテーブルを作成");
+
     return run(db, "INSERT INTO books(title) VALUES('JavaScriptの本')");
   })
   .then((result) => {
     console.log(`作成したレコードのidは${result.lastID}です`);
+
     return get(db, "SELECT * FROM books");
   })
   .then((row) => {
     console.log(`titleは${row.title}です`);
+
     return run(db, "DROP TABLE books");
   })
   .then(() => {
     console.log("booksテーブルを削除しました");
+
     return close(db);
   });
