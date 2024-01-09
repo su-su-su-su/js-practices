@@ -22,7 +22,7 @@ async function main() {
     }
   }
   try {
-    await get(db, "SELECT * FROM books WHERE notitle");
+    await get(db, "SELECT * FROM books WHERE notitle = true");
   } catch (err) {
     if (err instanceof Error) {
       console.error(`エラー発生: ${err.message}`);
