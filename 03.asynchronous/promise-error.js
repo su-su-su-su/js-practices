@@ -17,7 +17,7 @@ run(
   .catch((err) => {
     console.error(`エラー発生: ${err.message}`);
 
-    return get(db, "SELECT * FROM books WHERE notitle = true");
+    return get(db, "SELECT * FROM books WHERE notitle");
   })
   .catch((err) => {
     console.error(`エラー発生: ${err.message}`);
