@@ -11,6 +11,7 @@ async function main() {
     "CREATE TABLE books(id INTEGER PRIMARY KEY AUTOINCREMENT, title TEXT NOT NULL UNIQUE)"
   );
   console.log("booksテーブルを作成");
+
   try {
     await run(db, "INSERT INTO book(title) VALUES('JavaScriptの本')");
   } catch (err) {
@@ -20,6 +21,7 @@ async function main() {
       throw err;
     }
   }
+
   try {
     await get(db, "SELECT * FROM books WHERE notitle");
   } catch (err) {
@@ -29,6 +31,7 @@ async function main() {
       throw err;
     }
   }
+
   await run(db, "DROP TABLE books");
   console.log("booksテーブルを削除しました");
 
