@@ -11,9 +11,8 @@ export class Database {
     );
   }
 
-  async create(title, content) {
+  async create(content) {
     const result = await this.run("INSERT INTO memos(content) VALUES(?)", [
-      title,
       content,
     ]);
     return result.lastID;
