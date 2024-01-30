@@ -1,11 +1,21 @@
 import enquirer from "enquirer";
 import minimist from "minimist";
 import { Memo } from "./memo.js";
+import { Cli } from "./cli.js";
 
 async function main() {
   const memo = new Memo();
+  const cli = new Cli();
   const argv = minimist(process.argv.slice(2));
   await memo.init();
+
+  if (!process.stdin.isTTY) {
+    const lines = await cli.readStdin();
+    if (lines.length > 0) {
+      await memo.create(lines.join("\n"));
+    }
+    return;
+  }
 
   if (argv.l) {
     const memos = await memo.list();
