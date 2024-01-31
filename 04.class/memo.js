@@ -1,6 +1,6 @@
 import { Database } from "./database.js";
 
-class Memo {
+export class Memo {
   constructor() {
     this.db = new Database();
   }
@@ -55,5 +55,3 @@ class Memo {
     }
   }
 }
-
-export { Memo };

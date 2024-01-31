@@ -1,6 +1,6 @@
 import readline from "readline";
 
-class Cli {
+export class Cli {
   readStdin() {
     return new Promise((resolve) => {
       const lines = [];
@@ -19,5 +19,3 @@ class Cli {
     });
   }
 }
-
-export { Cli };
