@@ -9,7 +9,7 @@ export class Memo {
     await this.db.createTable();
   }
 
-  async create(content) {
+  async add(content) {
     const recordId = await this.db.create(content);
     console.log(`作成したレコードのidは${recordId}です`);
   }

@@ -16,7 +16,7 @@ export class App {
     if (!process.stdin.isTTY) {
       const lines = await this.cli.readStdin();
       if (lines.length > 0) {
-        await this.memo.create(lines.join("\n"));
+        await this.memo.add(lines.join("\n"));
       }
       return;
     }
