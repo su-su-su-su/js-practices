@@ -1,22 +1,22 @@
-import { Database } from "./database.js";
+import { MemoRepository } from "./database.js";
 
 export class Memo {
   constructor() {
-    this.db = new Database();
+    this.db = new MemoRepository();
   }
 
   async init() {
     await this.db.createTable();
   }
 
-  async add(content) {
+  async write(content) {
     const recordId = await this.db.create(content);
     console.log(`作成したレコードのidは${recordId}です`);
   }
 
-  async list() {
+  async readAll() {
     try {
-      const memos = await this.db.index();
+      const memos = await this.db.loadAll();
       if (memos.length > 0) {
         return memos.map((memo) => `${memo.id}: ${memo.content}`);
       } else {
@@ -29,7 +29,7 @@ export class Memo {
     }
   }
 
-  async view(id) {
+  async read(id) {
     try {
       const memo = await this.db.show(id);
       if (memo) {

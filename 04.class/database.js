@@ -1,6 +1,6 @@
 import sqlite3 from "sqlite3";
 
-export class Database {
+export class MemoRepository {
   constructor() {
     this.sqliteDb = new sqlite3.Database("./memo.db");
   }
@@ -18,7 +18,7 @@ export class Database {
     return result.lastID;
   }
 
-  async index() {
+  async loadAll() {
     return await this.all("SELECT * FROM memos");
   }
 

@@ -16,19 +16,19 @@ export class App {
     if (!process.stdin.isTTY) {
       const lines = await this.cli.readStdin();
       if (lines.length > 0) {
-        await this.memo.add(lines.join("\n"));
+        await this.memo.write(lines.join("\n"));
       }
       return;
     }
 
     if (argv.l) {
-      const memos = await this.memo.list();
+      const memos = await this.memo.readAll();
       memos.forEach((memo) => {
         const firstLine = memo.split("\n")[0];
         console.log(firstLine);
       });
     } else if (argv.r || argv.d) {
-      const memos = await this.memo.list();
+      const memos = await this.memo.readAll();
       if (memos.length === 0) {
         return;
       }
@@ -46,7 +46,7 @@ export class App {
 
       const id = selectMemo.split(":")[0];
       if (argv.r) {
-        await this.memo.view(id);
+        await this.memo.read(id);
       } else if (argv.d) {
         await this.memo.delete(id);
       }
