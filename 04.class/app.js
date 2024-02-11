@@ -30,7 +30,6 @@ export class App {
     } else if (argv.r || argv.d) {
       const memos = await this.memo.list();
       if (memos.length === 0) {
-        console.log("メモはまだありません。");
         return;
       }
       const firstLines = memos.map((memo) => {
