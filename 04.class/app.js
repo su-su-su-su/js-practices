@@ -13,20 +13,13 @@ export class App {
     const argv = minimist(process.argv.slice(2));
     await this.memo.init();
 
-    if (!process.stdin.isTTY) {
-      const lines = await this.cli.readStdin();
-      if (lines.length > 0) {
-        await this.memo.write(lines.join("\n"));
-      }
-      return;
-    }
-
     if (argv.l) {
       const memos = await this.memo.readAll();
       memos.forEach((memo) => {
         const firstLine = memo.split("\n")[0];
         console.log(firstLine);
       });
+      return;
     } else if (argv.r || argv.d) {
       const memos = await this.memo.readAll();
       if (memos.length === 0) {
@@ -50,6 +43,12 @@ export class App {
       } else if (argv.d) {
         await this.memo.delete(id);
       }
+      return;
+    }
+
+    const lines = await this.cli.readStdin();
+    if (lines.length > 0) {
+      await this.memo.write(lines.join("\n"));
     }
   }
 }
