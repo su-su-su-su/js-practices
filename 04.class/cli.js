@@ -1,4 +1,5 @@
 import readline from "readline";
+import enquirer from "enquirer";
 
 export class Cli {
   readStdin() {
@@ -17,5 +18,15 @@ export class Cli {
         resolve(lines);
       });
     });
+  }
+
+  async selectPrompt(message, firstLines) {
+    const { selectMemo } = await enquirer.prompt({
+      type: "select",
+      name: "selectMemo",
+      message: message,
+      choices: firstLines,
+    });
+    return selectMemo;
   }
 }

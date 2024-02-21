@@ -1,4 +1,3 @@
-import enquirer from "enquirer";
 import minimist from "minimist";
 import { Memo } from "./memo.js";
 import { Cli } from "./cli.js";
@@ -28,14 +27,10 @@ export class App {
       const firstLines = memos.map((memo) => {
         return memo.split("\n")[0];
       });
-      const { selectMemo } = await enquirer.prompt({
-        type: "select",
-        name: "selectMemo",
-        message: argv.r
-          ? "Choose a note you want to see:"
-          : "Choose a note you want to delete:",
-        choices: firstLines,
-      });
+      const message = argv.r
+        ? "Choose a note you want to see:"
+        : "Choose a note you want to delete:";
+      const selectMemo = await this.cli.selectPrompt(message, firstLines);
 
       const id = selectMemo.split(":")[0];
       if (argv.r) {
