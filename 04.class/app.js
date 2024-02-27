@@ -19,7 +19,8 @@ export class App {
         console.log(firstLine);
       });
       return;
-    } else if (argv.r || argv.d) {
+    }
+    if (argv.r || argv.d) {
       const memos = await this.memo.readAll();
       if (memos.length === 0) {
         return;
