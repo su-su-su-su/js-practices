@@ -22,7 +22,7 @@ export class MemoRepository {
     return await this.all("SELECT * FROM memos");
   }
 
-  async show(id) {
+  async load(id) {
     const memo = await this.get("SELECT * FROM memos WHERE id = ?", [id]);
     return memo;
   }

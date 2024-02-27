@@ -31,7 +31,7 @@ export class Memo {
 
   async read(id) {
     try {
-      const memo = await this.db.show(id);
+      const memo = await this.db.load(id);
       if (memo) {
         console.log(memo.content);
       } else {
